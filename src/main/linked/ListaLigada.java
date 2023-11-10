@@ -12,14 +12,38 @@ public class ListaLigada implements EstruturaElementar{
 
     @Override
     public boolean buscaElemento(int valor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscaElemento'");
+        if (cabeca == null){
+            return false;
+        } else {
+            No posicao = cabeca;
+            while (posicao != null){
+                if (posicao.getValor() == valor){
+                    return true;
+                }
+                posicao = posicao.getProximo();
+            } 
+            return false;
+        }
     }
 
     @Override
     public int buscaIndice(int valor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscaIndice'");
+        if (cabeca == null){
+            return -1;
+        } else {
+            No posicao = cabeca;
+            int contador = 0;
+            while(posicao != null){
+                if (contador == valor){
+                    return posicao.getValor();
+                }
+                contador ++;
+                posicao = posicao.getProximo();
+            }
+            return -1;
+
+        }
+
     }
 
     @Override
@@ -48,8 +72,15 @@ public class ListaLigada implements EstruturaElementar{
 
     @Override
     public void insereElemento(int valor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'insereElemento'");
+        No novo = new No(valor);
+
+        if (cabeca == null){
+            cabeca = novo;
+
+        } else {
+            novo.setProximo(cabeca);
+            cabeca = novo;
+        }
     }
 
     @Override
@@ -60,8 +91,7 @@ public class ListaLigada implements EstruturaElementar{
 
     @Override
     public void insereInicio(int valor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'insereInicio'");
+        insereElemento(valor);
     }
 
     @Override
